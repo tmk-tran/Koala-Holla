@@ -10,6 +10,9 @@ $( document ).ready( function(){
 }); // end doc ready
 
 function setupClickListeners() {
+  $( '#viewKoalas' ).on( "click", ".deleteButton", deleteKoala);
+  $( '#viewKoalas' ).on( "click", ".readyButton", updateKoala);
+
   $( '#addButton' ).on( 'click', function(){
     console.log( 'in addButton on click' );
     // get user input and put in an object
@@ -31,15 +34,30 @@ function setupClickListeners() {
 function getKoalas(){
   console.log( 'in getKoalas' );
   // ajax call to server to get koalas
-  
-} // end getKoalas
+  $.ajax({
+    method: "GET",
+    url: "/koalas",
+  })
+    .then((response) => console.log('GET request for /koalas!', response)) // appendDom replace console.log
+    .catch((err) => console.log(err));
+}; // end getKoalas
 
 //ajax POST
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
+
+  // ajax call to server to post koalas
+ $.ajax({
+  method: "POST",
+  url: "/koalas",
+  data: newKoala,
+ }).then(() => getKoalas())
+ .catch((err) => console.log(err));
+};
   // ajax call to server to get koalas
  
 }
+
 
 
 function appendDom(koalas){
@@ -78,3 +96,11 @@ function updateKoala(event){
   .catch((err) => {console.log("Error with PUT ajax", err)
 })
 }
+const deleteKoala = (event) => {
+  const id = $(event.target).data("id");
+  $.ajax({
+    method: "DELETE",
+    url: `/koalas/${id}`,
+  }).then(() => getKoalas()).catch((err) => console.log(err));
+}; // end of deleteKoala
+
