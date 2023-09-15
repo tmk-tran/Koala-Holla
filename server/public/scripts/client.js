@@ -10,6 +10,9 @@ $( document ).ready( function(){
 }); // end doc ready
 
 function setupClickListeners() {
+  $( '#viewKoalas' ).on( "click", ".deleteButton", deleteKoala);
+  $( '#viewKoalas' ).on( "click", ".readyButton", updateKoala);
+
   $( '#addButton' ).on( 'click', function(){
     console.log( 'in addButton on click' );
     // get user input and put in an object
@@ -38,3 +41,10 @@ function saveKoala( newKoala ){
   // ajax call to server to get koalas
  
 }
+const deleteKoala = (event) => {
+  const id = $(event.target).data("id");
+  $.ajax({
+    method: "DELETE",
+    url: `/koalas/${id}`,
+  }).then(() => getKoalas()).catch((err) => console.log(err));
+}; // end of deleteKoala
