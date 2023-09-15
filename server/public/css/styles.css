@@ -29,5 +29,13 @@ h3 {
 
 .image {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    border: 2px solid black;
+    padding: 25px;
+    margin: 0 auto;
+}
+
+img.sadKoala {
+    margin: 0 auto;
+    width: 35%;
 }
