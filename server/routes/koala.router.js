@@ -5,7 +5,7 @@ const koalaRouter = express.Router();
 const pool = require("../modules/pool");
 
 // GET
-Router.get("/", (req, res) =>{
+koalaRouter.get("/", (req, res) =>{
     console.log('GET request made to /koalas/');
     const queryText = `SELECT * FROM "koalas";`;
 
@@ -20,7 +20,7 @@ Router.get("/", (req, res) =>{
 
 // POST
 
-router.post("/", (req, res) => {
+koalaRouter.post("/", (req, res) => {
     const koala = req.body;
     console.log("Adding Koala", koala);
     let queryText = `INSERT INTO "koalas" ("name", "gender", "age", "ready", "notes") 
@@ -42,7 +42,7 @@ router.post("/", (req, res) => {
 })
 
 // PUT
-router.put("/:id", (req, res) => {
+koalaRouter.put("/:id", (req, res) => {
     const id = req.params.id;
     const koala = req.body;
     let queryText;
@@ -59,7 +59,7 @@ router.put("/:id", (req, res) => {
 })
 
 // DELETE
-router.delete("/:id", (req, res) => {
+koalaRouter.delete("/:id", (req, res) => {
     const id = req.params.id;
     console.log("DELETE route in /koala with id of:", id);
     // sanitize queryText
