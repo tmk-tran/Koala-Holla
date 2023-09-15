@@ -31,7 +31,7 @@ h3 {
     display: flex;
     align-items: center;
     padding: 50px;
-    /* border: 2px solid black; */
+    border: 2px solid black;
 }
 
 img.sadKoala {
@@ -53,9 +53,9 @@ label {
 }
 
 .container {
-    /* border: 2px solid black; */
+    border: 2px solid black;
 }
 
 #addKoala {
-    /* border: 2px solid black; */
+    border: 2px solid black;
 }
