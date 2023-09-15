@@ -26,10 +26,10 @@ koalaRouter.post("/", (req, res) => {
     let queryText = `INSERT INTO "koalas" ("name", "gender", "age", "ready", "notes") 
                         VAlUES ($1, $2, $3, $4, $5);`
    // backend validation
-  if (!koala.name || !koala.gender || !koala.age || !koala.ready || !koala.notes) {
-  res.sendStatus(400);
-  return;
-  } 
+//   if (!koala.name || !koala.gender || !koala.age || !koala.ready || !koala.notes) {
+//   res.sendStatus(400);
+//   return;
+//   } 
   pool
   .query(queryText, [koala.name, koala.gender, koala.age, koala.ready, koala.notes])
   .then((result) => {
@@ -63,14 +63,14 @@ koalaRouter.delete("/:id", (req, res) => {
     const id = req.params.id;
     console.log("DELETE route in /koala with id of:", id);
     // sanitize queryText
-    const queryText = `DELELE FROM "koalas" WHERE "id" = $1;`;
+    const queryText = `DELETE FROM "koalas" WHERE "id" = $1;`;
     pool
     .query(queryText, [id])
     .then(() => {
         res.sendStatus(204); // 204 no content
       })
     .catch((err) => {
-        console.log("error in DELETing songs from books table", err);
+        console.log("error in DELETing songs from koalas table", err);
         res.sendStatus(500);
     });
     
