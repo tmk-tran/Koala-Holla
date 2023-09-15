@@ -10,7 +10,8 @@ $( document ).ready( function(){
 }); // end doc ready
 
 function setupClickListeners() {
-  $( '#viewKoalas' ).on( "click", ".deleteButton", deleteKoala);
+ $( '#viewKoalas' ).on( "click", ".deleteButton", deleteSwal);
+
   $( '#viewKoalas' ).on( "click", ".readyButton", updateKoala);
 
   $( '#addButton' ).on( 'click', function(){
@@ -109,6 +110,28 @@ function updateKoala(event){
   .then(() => getKoalas())
   .catch((err) => {console.log("Error with PUT ajax", err)
 })
+}
+function deleteSwal(event) {
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this koala!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((confirm) => {
+    console.log(confirm)
+    if (confirm) {
+      deleteKoala(event);
+      console.log("koala-holla please delete!");
+      swal("The koala has been removed", {
+        icon: "success",
+      });
+    } else {
+      swal("Your koala is safe!");
+    }
+  });
+  
 }
 
 const deleteKoala = (event) => {
