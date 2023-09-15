@@ -9,6 +9,12 @@ const koalaRouter = express.Router();
 
 // POST
 
+router.post("/", (req, res) => {
+    const koala = req.body;
+    console.log("Adding Koala", koala);
+    let queryText = `INSERT INTO "koalas" ("author", "title", "isRead") `
+})
+
 
 // PUT
 
