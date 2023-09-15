@@ -19,7 +19,7 @@ function setupClickListeners() {
       name: 'testName',
       age: 'testName',
       gender: 'testName',
-      readyForTransfer: 'testName',
+      ready: 'testName',
       notes: 'testName',
     };
     // call saveKoala with the new obejct
