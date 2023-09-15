@@ -14,22 +14,22 @@ function setupClickListeners() {
   $( '#viewKoalas' ).on( "click", ".readyButton", updateKoala);
 
   $( '#addButton' ).on( 'click', function(){
-    koala.name = $("#nameIn").val();
-    koala.gender = $("#genderIn").val();
-    koala.age = $("#ageIn").val();
-    koala.ready = $("#readyForTransferIn").val();
-    koala.notes = $("#notesIn").val();
+    let koalaName = $("#nameIn").val();
+    let koalaGender = $("#genderIn").val();
+    let koalaAge = $("#ageIn").val();
+    let koalaReady = $("#readyForTransferIn").val();
+    let koalaNotes = $("#notesIn").val();
 
     console.log( 'in addButton on click' );
     // get user input and put in an object
     // NOT WORKING YET :(
     // using a test object
     let koalaToSend = {
-      name: koala.name,
-      age: koala.age,
-      gender: koala.gender,
-      ready: koala.ready,
-      notes: koala.notes,
+      name: koalaName,
+      age: koalaAge,
+      gender: koalaGender,
+      ready: koalaReady,
+      notes: koalaNotes,
     };
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
@@ -89,13 +89,13 @@ function appendDom(koalas){
 // ajax PUT
 function updateKoala(event){
   const id = $(event.target).data("id");
-  const isReady = $(event.target).data("ready");
-  console.log(id, isReady);
+  const ready = $(event.target).data("ready");
+  console.log(id, ready);
 
   $.ajax({
     method: "PUT",
     url: `/koalas/${id}`,
-    data: {isReady: !isReady},
+    data: {ready: !ready},
   })
   .then(() => getKoalas())
   .catch((err) => {console.log("Error with PUT ajax", err)
