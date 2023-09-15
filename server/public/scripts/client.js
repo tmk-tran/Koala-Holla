@@ -38,3 +38,10 @@ function saveKoala( newKoala ){
   // ajax call to server to get koalas
  
 }
+const deleteKoala = (event) => {
+  const id = $(event.target).data("id");
+  $.ajax({
+    method: "DELETE",
+    url: `/koalas/${id}`,
+  }).then(() => getKoalas()).catch((err) => console.log(err));
+}; // end of deleteKoala
