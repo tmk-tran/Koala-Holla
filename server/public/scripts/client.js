@@ -31,6 +31,15 @@ function setupClickListeners() {
       ready: koalaReady,
       notes: koalaNotes,
     };
+    if (!koalaName || !koalaAge || !koalaGender || !koalaReady || !koalaNotes){
+      alert("Please fill in all of the fields and try again!")
+      return
+    };
+    $("#nameIn").val('');
+    $("#genderIn").val('');
+    $("#ageIn").val('');
+    $("#readyForTransferIn").val('');
+    $("#notesIn").val('');
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
   }); 
