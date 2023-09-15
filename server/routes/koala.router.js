@@ -7,7 +7,7 @@ const pool = require("../modules/pool");
 // GET
 koalaRouter.get("/", (req, res) =>{
     console.log('GET request made to /koalas/');
-    const queryText = `SELECT * FROM "koalas";`;
+    const queryText = `SELECT * FROM "koalas" ORDER BY "id" ASC;`;
 
     pool
     .query(queryText)
@@ -26,10 +26,10 @@ koalaRouter.post("/", (req, res) => {
     let queryText = `INSERT INTO "koalas" ("name", "gender", "age", "ready", "notes") 
                         VAlUES ($1, $2, $3, $4, $5);`
    // backend validation
-//   if (!koala.name || !koala.gender || !koala.age || !koala.ready || !koala.notes) {
-//   res.sendStatus(400);
-//   return;
-//   } 
+  if (!koala.name || !koala.gender || !koala.age || !koala.ready || !koala.notes) {
+  res.sendStatus(400);
+  return;
+  } 
   pool
   .query(queryText, [koala.name, koala.gender, koala.age, koala.ready, koala.notes])
   .then((result) => {
@@ -45,9 +45,11 @@ koalaRouter.post("/", (req, res) => {
 koalaRouter.put("/:id", (req, res) => {
     const id = req.params.id;
     const koala = req.body;
+    console.log(req.body);
     let queryText;
     console.log("UPDATE koala in /koala with id:", id);
     queryText = `UPDATE "koalas" SET "ready" = ${koala.ready} WHERE "id" = $1;`;
+    console.log("querytext for true or false", queryText);
     pool.query(queryText, [id])
     .then(() => {
         res.sendStatus(204); // 204 no content
