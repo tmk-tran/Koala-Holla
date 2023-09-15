@@ -14,16 +14,22 @@ function setupClickListeners() {
   $( '#viewKoalas' ).on( "click", ".readyButton", updateKoala);
 
   $( '#addButton' ).on( 'click', function(){
+    koala.name = $("#nameIn").val();
+    koala.gender = $("#genderIn").val();
+    koala.age = $("#ageIn").val();
+    koala.ready = $("#readyForTransferIn").val();
+    koala.notes = $("#notesIn").val();
+
     console.log( 'in addButton on click' );
     // get user input and put in an object
     // NOT WORKING YET :(
     // using a test object
     let koalaToSend = {
-      name: 'testName',
-      age: 'testName',
-      gender: 'testName',
-      ready: 'testName',
-      notes: 'testName',
+      name: koala.name,
+      age: koala.age,
+      gender: koala.gender,
+      ready: koala.ready,
+      notes: koala.notes,
     };
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
@@ -95,6 +101,7 @@ function updateKoala(event){
   .catch((err) => {console.log("Error with PUT ajax", err)
 })
 }
+
 const deleteKoala = (event) => {
   const id = $(event.target).data("id");
   $.ajax({
