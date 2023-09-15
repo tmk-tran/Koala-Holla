@@ -102,7 +102,7 @@ function updateKoala(event){
   .catch((err) => {console.log("Error with PUT ajax", err)
 })
 }
-function deleteSwal() {
+function deleteSwal(event) {
   swal({
     title: "Are you sure?",
     text: "Once deleted, you will not be able to recover this koala!",
@@ -110,8 +110,11 @@ function deleteSwal() {
     buttons: true,
     dangerMode: true,
   })
-  .then((deleteKoala) => {
-    if (deleteKoala) {
+  .then((confirm) => {
+    console.log(confirm)
+    if (confirm) {
+      deleteKoala(event);
+      console.log("koala-holla please delete!");
       swal("The koala has been removed", {
         icon: "success",
       });
