@@ -1,3 +1,28 @@
 body {
     background-color: rgb(8, 170, 190);
 }
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+.inputFields {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    width: 25%;
+    margin: 0 auto;
+    gap: 5px;
+}
+
+.button {
+    background-color: forestgreen;
+}
