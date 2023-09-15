@@ -65,5 +65,16 @@ function appendDom(koalas){
 
 // ajax PUT
 function updateKoala(event){
-  const id = $(event.target)
+  const id = $(event.target);
+  const isReady = $(event.target).data("id");
+  console.log(id, isReady);
+
+  $.ajax({
+    method: "PUT",
+    url: `/koalas/${id}`,
+    data: {isReady: !isReady},
+  })
+  .then()
+  .catch()
+
 }
