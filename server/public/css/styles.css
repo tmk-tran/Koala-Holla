@@ -31,9 +31,31 @@ h3 {
     display: flex;
     align-items: center;
     padding: 50px;
+    /* border: 2px solid black; */
 }
 
 img.sadKoala {
     margin: 0 auto;
     width: 35%;
+}
+
+.inputFields {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-btn {
+    background-color: forestgreen;
+}
+
+label {
+    text-align: center;
+}
+
+.container {
+    /* border: 2px solid black; */
+}
+
+#addKoala {
+    /* border: 2px solid black; */
 }
