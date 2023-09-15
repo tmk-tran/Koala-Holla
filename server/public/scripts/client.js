@@ -38,7 +38,7 @@ function getKoalas(){
     method: "GET",
     url: "/koalas",
   })
-    .then((response) => console.log('GET request for /koalas!', response)) // appendDom replace console.log
+    .then((response) => appendDom(response)) 
     .catch((err) => console.log(err));
 }; // end getKoalas
 
@@ -56,7 +56,6 @@ function saveKoala( newKoala ){
 };
   // ajax call to server to get koalas
  
-
 
 
 
