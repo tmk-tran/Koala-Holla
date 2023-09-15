@@ -5,7 +5,7 @@ const koalaRouter = express.Router();
 
 
 // GET
-Router.get("/", (req, res) =>{
+router.get("/", (req, res) =>{
     console.log('GET request made to /koalas/');
     const queryText = `SELECT * FROM "koalas";`;
 
