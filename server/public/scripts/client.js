@@ -65,8 +65,8 @@ function appendDom(koalas){
 
 // ajax PUT
 function updateKoala(event){
-  const id = $(event.target);
-  const isReady = $(event.target).data("id");
+  const id = $(event.target).data("id");
+  const isReady = $(event.target).data("ready");
   console.log(id, isReady);
 
   $.ajax({
@@ -74,7 +74,7 @@ function updateKoala(event){
     url: `/koalas/${id}`,
     data: {isReady: !isReady},
   })
-  .then()
-  .catch()
-
+  .then(() => getKoalas())
+  .catch((err) => {console.log("Error with PUT ajax", err)
+})
 }
