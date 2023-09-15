@@ -14,6 +14,15 @@ h3 {
     text-align: center;
 }
 
-.input {
+.inputFields {
     display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    width: 25%;
+    margin: 0 auto;
+    gap: 5px;
+}
+
+.button {
+    background-color: forestgreen;
 }
